@@ -1,0 +1,129 @@
+.control{
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .3);
+    overflow: scroll;
+}
+
+.control-box{
+    width: 100%;
+    position: absolute;
+    bottom: 10%;
+    left:0;
+}
+
+
+.control-item{
+    // height: 120px;
+    // line-height: 120px;
+    margin-bottom: 8%;
+    text-align: center;
+    & .icon{
+        width: 52px;
+        height: 52px;
+        display: inline-block;
+        margin-bottom: 10px;
+    }
+
+    & .text{
+        // position: relative;
+        display: block;
+        font-size: 16px;
+        color: rgba(255, 255, 255, .6);
+        // margin: 0 10px;
+    }
+    & .text:before{
+        content: '';        
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        background: url('../img/arraw.png') center no-repeat;
+        background-size: cover;
+        transform: rotate(180deg);
+        margin-right: 10px;
+    }
+    & .text:after{
+        content: '';
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        background: url('../img/arraw.png') center no-repeat;
+        background-size: cover;
+        margin-left: 10px;
+        
+    }
+}
+.control-item:last-of-type{
+    margin: 0
+}
+
+.status .icon{
+    transition: all .4s ease-in-out;
+    background: url('../img/switch.png') no-repeat;
+    
+    &.on1{
+        background-size: cover;
+    }
+
+    &.on0{
+        background-size: cover;
+        background-position-x: -48px; 
+    }
+}
+
+.model .icon{
+    transition: all .4s ease-in-out;
+    
+    background: url('../img/model.png') no-repeat;
+    background-size: cover;
+    &.on0{
+        // background-size: cover;
+    }
+
+    &.on1{
+        // background-size: cover;
+        background-position-x: -57px; 
+    }
+
+    &.on2{
+        // background: url('../img/switch.png') no-repeat;
+        // background-size: cover;
+        background-position-x: -113px; 
+    }
+}
+
+.speed .icon{
+    // opacity: 0.6;
+    background:  url('../img/speed1.png') no-repeat;
+    background-size: cover;
+    width: 60px;
+}
+
+.time .icon{
+    background: url('../img/switch.png') no-repeat;
+    background-size: cover;
+    background-position-x: -101px;
+}
+
+.sele-box{
+    width: 100%;
+
+    & .sele-item{
+        height: 45px;
+        line-height: 45px;
+        font-size: 16px;
+        text-align: center;
+        background: #fff;
+        color: rgba(8, 13, 21, .8);
+        border-bottom: 1px solid #e7e7e7;
+    }
+    & .sele-item:last-of-type{
+        border-bottom: 0;
+    }
+}
+
+.gray{
+    opacity: 0.5;
+}
+
+

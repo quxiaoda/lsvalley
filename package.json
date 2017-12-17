@@ -1,0 +1,63 @@
+{
+  "name": "h5mall_static",
+  "version": "2.0.0",
+  "description": "h5mall static framework",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git@git.tuan800-inc.com:mobile_web/h5mall_static.git"
+  },
+  "dependencies": {
+    "axios": "^0.15.3",
+    "echarts": "^3.4.0",
+    "vue": "^2.1.6",
+    "vue-echarts-v3": "^1.0.3",
+    "vue-lazyload": "^1.0.0-rc10",
+    "vue-router": "^2.1.1",
+    "vue-wechat-title": "^2.0.4",
+    "vuex": "^2.1.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.21.0",
+    "babel-eslint": "^7.1.1",
+    "babel-loader": "^6.2.10",
+    "babel-plugin-transform-runtime": "^6.15.0",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-stage-2": "^6.18.0",
+    "babel-register": "^6.18.0",
+    "cross-env": "^3.1.3",
+    "css-loader": "^0.26.1",
+    "eslint": "^3.12.2",
+    "eslint-loader": "^1.6.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.9.0",
+    "glob": "^7.1.1",
+    "html-webpack-plugin": "^2.24.1",
+    "image-webpack-loader": "^3.1.0",
+    "imports-loader": "^0.7.0",
+    "json-loader": "^0.5.4",
+    "lodash": "^4.17.4",
+    "postcss-cssnext": "^2.9.0",
+    "postcss-import": "^9.1.0",
+    "postcss-loader": "^1.2.2",
+    "postcss-modules": "^0.6.3",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "vue-loader": "^10.0.2",
+    "vue-style-loader": "^1.0.0",
+    "vue-template-compiler": "^2.1.6",
+    "webpack": "^1.14.0",
+    "webpack-dashboard": "^1.0.2",
+    "webpack-dev-server": "^1.16.2",
+    "webpack-md5-hash": "0.0.5",
+    "webpack-merge": "^2.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dashboard -- webpack-dev-server",
+    "build": "cross-env NODE_ENV=production webpack --progress --colors",
+    "build-test": "cross-env NODE_ENV=testing webpack --progress --colors"
+  },
+  "author": "ronghang luo",
+  "license": "MIT"
+}

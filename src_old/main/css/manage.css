@@ -1,0 +1,178 @@
+.manage{
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .5);
+    overflow: scroll;
+}
+
+.device-select{
+    height: 85px;
+    line-height: 85px;
+    margin: 20px 20px 5px;
+    /* text-align: center; */
+    background: rgba(8, 13, 21, .6);
+    border-radius: 5px;
+    font-size: 0.4rem;
+    color: #fff;
+    position: relative;
+    & .name{
+        margin-left: 8%;
+    }
+
+    
+    & i{
+        position: absolute;
+        top: 45%;
+        right: 20px;
+        height: 0px;
+        width: 0;
+        font-size: 0;
+        border-top: 10px solid #fff;
+        border-right: 10px solid transparent;
+        border-left: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        
+    }
+}
+
+.device-info{
+    background: rgba(8, 13, 21, .6);
+    border-radius: 5px;
+    font-size: 0.4rem;
+    color: #fff;
+    margin: 0 20px;
+
+    & .item{
+        position: relative;
+        // height: 80px;
+        // line-height: 80px;
+        padding: 20px 0;
+        margin: 0 15px;
+        border-bottom: 1px solid rgba(255, 255, 255, .2);
+
+        & .name{
+            margin-left: 4%;
+            display: inline-block;
+        }
+        & .air-quality{
+            display: inline-block;
+            vertical-align: text-top;
+            & .level{
+                padding-bottom: 10px;
+                border-bottom: 1px solid rgba(255, 255, 255, .2);
+            }
+            & .desc{
+                font-size: 10px;
+                color: rgba(255, 255, 255, .6);
+                padding-top: 10px;
+            }
+            & .box-item{
+                font-size: 10px;
+                color: #fff;
+                margin-right: 30px;
+                & i{
+                    display: inline-block;
+                    width: 10px;
+                    height: 10px;
+                    background: #535353;
+                    border: 1px solid #fff;
+                    border-radius: 10px;
+                    vertical-align: text-bottom;
+                }
+            }
+            & .box-item.on i{
+                background: #FFF;
+            }
+            & .box-item:last-of-type{
+                margin:0;
+            }
+        }
+        & .clear-btn{
+            color: #a42d2f;
+            position: absolute;
+            top: 2%;
+            right: 10px;
+        }
+        & .progress-o{
+            display: inline-block;
+            width: 120px;
+            height: 16px;
+            border: 1px solid rgba(255, 255, 255, .2);
+            border-radius: 8px;
+            line-height:  9px; 
+            position: relative;
+            vertical-align: sub;
+
+            & em{
+                position: absolute;
+                top: 4px;
+                left: 39%;
+                font-size: 11px;
+            }          
+
+        }
+        & .progress-i{
+            display: inline-block;
+            font-size: 8px;
+            text-align: center;
+            border-radius: 8px;
+            // width: 120px;
+            height: 16px;
+            line-height: 16px;
+            background-image: linear-gradient(to left,#79e777,#63c53d);
+        }
+        & i.edit{
+            position: absolute;
+            top: 27%;
+            right: 10px;
+            height: 24px;
+            width: 30px;
+            background: url('../img/set.png') center no-repeat;
+            background-size: cover;
+        }
+
+
+
+    }
+
+
+    
+}
+
+.unbind-btn{
+    margin: 40px auto 15px;
+    height: 60px;
+    line-height: 60px;
+    width: 150px;
+    text-align: center;
+    background: #cb3536;
+    border-radius: 10px;
+    color: rgba(255, 255, 255, .6);
+    font-size: 18px;
+}
+
+.add-btn{
+    height: 120px;
+    width: 150px;
+    text-align: center;
+    border-radius: 10px;
+    margin: 0px auto 20px;    
+    border: 1px dashed rgba(255, 255, 255, .6);
+
+    & i{
+        margin: 20px auto;
+        display: block;
+        width: 40px;
+        height: 40px;
+        background: url('../img/add.png') center no-repeat;
+        background-size: contain;
+    }
+
+    & span{
+        display: inline-block;
+        height: 20px;
+        font-size: 16px;
+        color: rgba(255, 255, 255, .6);
+
+    }
+}

@@ -1,0 +1,58 @@
+{
+    “msg_id”: 1234567890123456,
+    “user”: “user”,
+    “msg_type”: “get”,
+    “services”: {
+        “operation_status”: {
+        “status”: 0
+      },
+      “air_conditioner”: {
+          “tempe_indoor”:  0,
+          “tempe_outdoor”:  0,
+          “tempe_target”:  0,
+          “fan_speed”: 0
+          ...
+      }
+      ...
+    }
+    “data”:{ //自定义数据
+        
+    }
+}
+
+
+“data”:{ //自定义数据
+    "lsv_operation_status":{
+        "operation_status":0
+    }
+    "lsv_power_status":{
+        "power_status":1
+    }
+    "lsv_operation_mode":{
+        "operation_mode":2
+    }
+    "lsv_air_quality_target":{
+        "air_quality_target":0
+    }
+    "lsv_air_quality":{
+        "air_quality_lev":4,
+        "air_pm_2_5":500,
+        "air_pm_10_0":300
+    }
+    "lsv_filter_condition":{
+        "rm_filter":40
+    }
+    "lsv_wind_volume":{
+        "wind_wol":9
+    }
+    "lsv_temperature":{
+        "temperature_value":26
+    }
+    "lsv_humidity":{
+        "humidity_value":50
+    }
+    "lsv_timing_poweroff":{
+        "time_from_now":60
+    }
+}
+

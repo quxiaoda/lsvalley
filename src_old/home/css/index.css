@@ -1,0 +1,125 @@
+.title{
+      font-size: 18px;
+      width: 100%;
+      height: 45px;
+      line-height: 45px;
+      text-align: center;
+      border-bottom: 1px solid #eee;
+  }
+
+.list-box{
+    width: 100%;
+    background: #FFFFFF;
+    // padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    
+    & h3{
+        font-size: 14px;
+        padding: 10px;
+    }
+    & .d-list{
+        margin: 0 10px;
+    }
+    & .d-list li{
+        // width: 100%;
+        height: 30px;
+        line-height: 30px;
+        font-size: 12px;
+        color: #aaa;
+        border: 1px solid #eee;
+        padding-left: 10px;
+        &.on{
+            border: 1px solid #b8daa8;
+        }
+        & .unbind-btn{
+            float: right;
+            margin-right: 10px;
+            color: #ef4949;
+        }
+    }
+    & .no-device{
+        // text-align: center;
+        font-size: 12px;
+        color: #aaa;
+        padding-left: 10px;
+    }
+}
+.btn-area{
+    /*width: 100%*/
+    padding: 10px;
+}
+.btn-item{
+    display: inline-block;
+    padding: 10px;
+    border: 1px solid #e7e7e7;
+    background: #FFF;
+
+    text-align: center;
+}
+.info-show{
+    // padding-left: 16px;
+    padding: 10px;
+    text-align: left;
+    background: #FFFFFF;
+}
+.show-item{
+    display: block;
+    height: 20px;
+    line-height: 20px;
+    color: #595758;
+    margin-bottom:  10px;    
+}
+.input-item{
+    height: 40px;
+    line-height: 40px;
+    display: flex;
+    align-items: center;
+    & input{
+        height: 20px;
+        line-height: 20px;
+        border: 1px solid #eee;
+        flex: 1;
+        margin-left: 10px;
+    }
+}
+.read-only{
+    margin-bottom: 10px;
+}
+.read-only,.read-write{
+    font-size: 14px;
+    color: #595758;
+    & .li-item {
+        height: 30px;
+        line-height: 30px;
+        font-size: 12px;
+        border: 1px solid #eee;
+        border-top: 0;
+        padding-left: 10px;
+    }
+    & .li-item:first-of-type{
+        border: 1px solid #eee;        
+    }
+    & .desc{
+        font-size: 14px;    
+        color: #b8daa8;
+    }
+    & .item-tit{
+        display: inline-block;
+        margin-right: 10px;
+    }
+}
+.bott-list{
+    width: 100%;
+    background: #FFFFFF;
+}
+.bott-li{
+    height: 40px;
+    line-height: 40px;
+    color: #595758;
+    border-bottom: 1px solid #eee;        
+    text-align: center;
+    &:active{
+        background-color: rgba(0,0,0,.3);
+        color: #fff;
+    }
+}

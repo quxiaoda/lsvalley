@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport"/>
+    <title>js-sdk-test</title>
+    <script src="jquery.min.js"></script>
+    <script src="gizwits_ws_0.1.1.min.js"></script>
+    <script type="text/javascript">
+        var gizwitsws;
+
+        function GetRequest() {
+            var url = location.search; //获取url中"?"符后的字串
+            var theRequest = new Object();
+            if (url.indexOf("?") != -1) {
+                var str = url.substr(1);
+                strs = str.split("&");
+                for(var i = 0; i < strs.length; i ++) {
+                    theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);
+                }
+            }
+            return theRequest;
+        } 
+
+        function newObj(){
+            var Request = GetRequest();
+            var apiHost = $('#apiHost').val();
+            var commType = "attrs_v4"; //$('#commType').val();
+            var wechatOpenId = Request['oid']; //$('#wechatOpenId').val();
+            if(wechatOpenId == null){
+                wechatOpenId = "";
+                alert("no open id");
+            }
+            var gizwitsAppId = $('#gizwitsAppId').val();
+            gizwitsws = new GizwitsWS(apiHost, wechatOpenId, gizwitsAppId, commType);
+
+            gizwitsws.onInit = onInit;
+            gizwitsws.onConnected = onConnected;
+            gizwitsws.onOnlineStatusChanged = onOnlineStatusChanged;
+            gizwitsws.onReceivedRaw = onReceivedRaw;
+            gizwitsws.onReceivedAttrs = onReceivedAttrs;
+            gizwitsws.onError = onError;
+
+            showScreen("初始化对象成功!");
+        }
+
+        function init(){
+            gizwitsws.init();
+        }
+
+        function connect(){
+            var did = $('#did').val();
+            gizwitsws.connect(did);
+        }
+
+        function read(){
+            var did = $('#did').val();
+            gizwitsws.read(did);
+        }
+
+        function writeCommand(){
+            var did = $('#did').val();
+            if ($('#commType').val() == "attrs_v4"){
+                var attrs = "{\"test\":5}"; //$('#command').val();
+                gizwitsws.write(did, JSON.parse(attrs));
+            }else{
+                var raw = $('#command').val();
+                gizwitsws.send(did, JSON.parse(raw));
+            }
+        }
+
+        function clearLog(){
+            $('#log').html("");
+        }
+
+        //=========================================================
+        // callback functions
+        //=========================================================
+        function onInit(devices){
+            showScreen("onInit!");
+            if (devices.length == 0){
+                showScreen("没有绑定的设备");
+            }else{
+                for (var i = 0; i < devices.length; i++){
+                    showScreen("==================================================");
+                    showScreen("已绑定设备，did=" + devices[i].did);
+                    showScreen("已绑定设备，mac=" + devices[i].mac);
+                    showScreen("已绑定设备，product_key=" + devices[i].product_key);
+                    showScreen("已绑定设备，is_online=" + devices[i].is_online);
+                    showScreen("已绑定设备, dev_alias=" + devices[i].dev_alias);
+                    showScreen("已绑定设备，remark=" + devices[i].remark);
+                }
+            }
+        }
+
+        function onConnected(){
+            showScreen("websocket连接成功!");
+        }
+
+        function onOnlineStatusChanged(value){
+            showScreen("设备上下线通知，did=" + value.did);
+            showScreen("设备上下线通知，is_online=" + value.is_online);
+        }
+
+        function onReceivedRaw(value){
+        	console.log("Raw", value);
+            showScreen("设备Raw，did=" + value.did);
+            var str = "";
+            for (var i = 0; i < value.raw.length; i++){
+                str = str + value.raw[i] + " ";
+            }
+            showScreen("设备Raw，raw=" + str);
+        }
+
+        function onReceivedAttrs(value){
+        	console.log("attrs", value);
+            showScreen("设备Attrs，did=" + value.did);
+            for (var key in value.attrs){
+                showScreen("设备Attrs，" + key + ": " + value.attrs[key]);
+            }
+        }
+
+        function onError(value){
+            showError(value.toString());
+        }
+
+        //=========================================================
+        // inner functions
+        //=========================================================
+        function showScreen(txt){
+            $('#log').prepend('<p style="color: blue">' + txt + '</p>');
+        }
+
+        function showError(txt){
+            $('#log').prepend('<p style="color: red">' + txt + '</p>');
+        }
+        console.log('success')
+    </script>
+</head>
+<body>
+    <h3>Gizwits-Javascript-SDK Example</h3>
+    <hr/>
+    <table border="0" cellpadding="0", cellspacing="0">
+        <tr>
+            <td align="left" valign="top" style="border-right: #d0d0d0 1px solid; padding: 0 10px 0 0;">
+                <h4>1. 首先，请初始化GizwitsWS对象</h4>
+                <table border="0" cellpadding="0", cellspacing="2">
+                    <tr>
+                        <td align="left" valign="top">
+                            <label>apiHost:</label>
+                        </td>
+                        <td align="left" valign="top">
+                            <input type="text" id="apiHost" value="api.gizwits.com" size="30" placeholder="input like: api.gizwits.com" />
+                        </td>
+                        <td align="left" valign="top">
+                            <label style="font-size: small">机智云OpenApi域名</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="left" valign="top">
+                            <label>commType:</label>
+                        </td>
+                        <td align="left" valign="top">
+                            <select id="commType" about="">
+                                <option value="custom">custom</option>
+                                <option value="attrs_v4" selected="selected">attrs_v4</option>
+                            </select>
+                        </td>
+                        <td align="left" valign="top">
+                            <label style="font-size: small">协议格式，custom：自定义协议；attrs_v4：标准数据点协议</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="left" valign="top">
+                            <label>wechatOpenId:</label>
+                        </td>
+                        <td align="left" valign="top">
+                            <input type="text" id="wechatOpenId" value="" size="30" placeholder="自动获取"/>
+                            <script language="javascript">
+                                var Request = GetRequest();
+                                var wechatOpenId = Request['oid'];
+                                if(wechatOpenId == null){
+                                    wechatOpenId = "no_open_id";
+                                }
+                                document.getElementById("wechatOpenId").value= wechatOpenId;
+                            </script>
+                        </td>
+                        <td align="left" valign="top">
+                            <label style="font-size: small">微信用户OpenId</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="left" valign="top">
+                            <label>gizwitsAppId:</label>
+                        </td>
+                        <td align="left" valign="top">
+                            <input type="text" id="gizwitsAppId" value="21fa5d3d24a941e7969ab4fed4b43fc5" size="30" placeholder="60d9d45a420b4f539434adb127fe5e5e" />
+                        </td>
+                        <td align="left" valign="top">
+                            <label style="font-size: small">机智云平台应用标识</label>
+                        </td>
+                    </tr>
+                </table>
+                <br/>
+                <button id="newObj" onclick="newObj()">Do it!</button>
+                <br/>
+                <p>（初始化对象的过程中，已经自动完成了callback函数的创建。）</p>
+                <h4>2. 然后，使用GizwitsWS.init()获取绑定列表</h4>
+                <button id="init" onclick="init()">Do it!</button>
+                <br/>
+                <p>（绑定列表会在onInit这个callback函数返回。）</p>
+                <h4>3. 接着，选择一个设备，创建websocket连接</h4>
+                <label style="display:inline-block;width: 90px">did:</label><input type="text" id="did" value="" style="width: 500px;" placeholder="please input your device did, you can find it in the binding list" /><br/>
+                <button id="connect" onclick="connect()">Do it!</button>
+                <br/>
+                <p>（websocket创建成功，会回调函数onConnected。）</p>
+                <h4>4. 试一下读取设备状态</h4>
+                <button id="read" onclick="read()">Do it!</button>
+                <br/>
+                <p>（发送指令成功后，稍后会收到设备状态信息。）</p>
+                <h4>5. 试一下控制设备</h4>
+                <label>command:</label><br/>
+                <textarea rows="10" cols="90" id="command" placeholder='如果commType=custom，请输入p0，例如[<byte>,<byte>,<byte>...]；如果commType=attrs_v4，请输入datapoints，例如{"power":true}'></textarea>
+                <br/>
+                <button id="write" onclick="writeCommand()">Do it!</button>
+                <br/>
+                <p>（发送指令成功后，稍后会收到设备状态信息。）</p>
+            </td>
+            <td align="left" valign="top" style="padding: 0 0 0 10px;">
+                <button id="clear" onclick="clearLog();" >clear</button><br/>
+                <span id="log"></span>
+            </td>
+        </tr>
+    </table>
+
+</body>
+</html>
