@@ -1,0 +1,34 @@
+#bigimg_main {
+    width: 100%;
+    /*height: 100%;*/
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 4000;
+}
+
+#bg_layer {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 3000;
+    background-color: rgba(0, 0, 0, .6);
+    top: 0;
+    left: 0;
+}
+
+#dt_big_image {
+    width: 100%;
+    /*height: 100%;*/
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.img-item {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}

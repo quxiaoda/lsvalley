@@ -1,0 +1,83 @@
+.zheui-dialog-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    transform: translate(-50%, -50%);
+    z-index: 1001;
+    background-color: #fff;
+    opacity: 1;
+}
+.zheui-dialog-by {
+    /*width:100%;*/
+    /*height:80px;*/
+    padding: 20px;
+    text-align:center;
+}
+.dialog-t {
+    font-size:18px;
+    /*padding-top: 23px;*/
+}
+.dialog-con {
+    font-size:12px;
+    margin-top: 10px;
+}
+.dialog-btn-w{
+    height: 40px;
+    border-top: 1px solid #e8e8e8;
+    display: -webkit-box;
+}
+.dialog-btn-w span {
+    display: block;
+    -webkit-box-flex:1;
+    box-flex:1;
+    /*width: 50%;*/
+    line-height: 40px;
+    text-align: center;
+    color: #ef4949;
+}
+.dialog-btn-w span:active{
+    background-color: #ef4949;
+    color: #fff;
+}
+.dilog_btn_confirm {
+
+}
+.dilog_btn_cancel {
+    border-left: 1px solid #e8e8e8;
+}
+
+.zheui-dialog-layer {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    /*transition: .2s ease-out;*/
+    background-color: rgba(0, 0, 0, .6);
+    /*opacity: 0.5;*/
+    top: 0;
+    left: 0;
+}
+
+.dialog-enter-active{
+    transition: opacity .4s ease-out;
+}
+.dialog-leave-active {
+    transition: opacity .2s ease-out;
+}
+.layer-enter-active{
+    transition: all .2s ease-out;
+}
+.layer-leave-active {
+    transition: all .4s ease-out;
+}
+
+.layer-enter,
+.layer-leave-active {
+    opacity: 0;
+}
+
+.dialog-enter,
+.dialog-leave-active {
+    opacity: 0;
+}
